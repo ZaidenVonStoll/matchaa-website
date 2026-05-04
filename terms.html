@@ -1,43 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms of Service — Matchaa</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: -apple-system, sans-serif; max-width: 680px; margin: 60px auto; padding: 0 24px; color: #1a3d28; line-height: 1.7; }
-    h1 { font-size: 28px; margin-bottom: 8px; }
-    h2 { font-size: 18px; margin-top: 32px; }
-    p, li { font-size: 15px; color: #3a5a3a; }
-    a { color: #2d5e3a; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #3D6B4F;
+      --dark:  #1C2B22;
+      --muted: #7A8C80;
+      --bg:    #FAF8F4;
+      --card:  #FFFFFF;
+      --border:#E4EDE7;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      padding: 0 20px;
+    }
+
+    header {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 0 40px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      width: 44px;
+      height: 44px;
+      background: var(--green);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      color: white;
+      font-size: 22px;
+      font-weight: 400;
+      flex-shrink: 0;
+    }
+
+    .brand { font-size: 20px; font-weight: 600; color: var(--dark); }
+    .brand span { color: var(--green); }
+
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 48px 0 100px;
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 42px;
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.15;
+      margin-bottom: 32px;
+    }
+
+    .intro {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section {
+      margin-bottom: 44px;
+    }
+
+    h2 {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    p { margin-bottom: 14px; color: #3A4F42; }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+      color: #3A4F42;
+    }
+    li { margin-bottom: 6px; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-top: 16px;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 44px 0;
+    }
+
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 32px 0 48px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
   </style>
 </head>
 <body>
+
+<header>
+  <div class="logo">M</div>
+  <div>
+    <div class="brand">match<span>aa</span></div>
+  </div>
+</header>
+
+<main>
+  <p class="meta">Legal · Terms</p>
   <h1>Terms of Service</h1>
-  <p>Last updated: May 5, 2026</p>
 
-  <h2>1. Acceptance</h2>
-  <p>By using Matchaa, you agree to these terms. If you do not agree, do not use the app.</p>
+  <p class="intro">
+    These terms govern your use of Matchaa. By using the app, you agree to these terms. Please read them carefully — they're written to be clear, not confusing.
+  </p>
 
-  <h2>2. Eligibility</h2>
-  <p>You must be at least 17 years old to use Matchaa.</p>
+  <!-- 1 -->
+  <section>
+    <h2>01</h2>
+    <h3>Acceptance</h3>
+    <p>By creating an account or using Matchaa, you agree to be bound by these Terms of Service and our <a href="/privacy">Privacy Policy</a>. If you do not agree, do not use the app.</p>
+  </section>
 
-  <h2>3. Purpose</h2>
-  <p>Matchaa is a platonic friendship app. It is not a dating app. Any use of the platform for romantic or sexual purposes is prohibited.</p>
+  <div class="divider"></div>
 
-  <h2>4. Conduct</h2>
-  <p>You agree not to harass, abuse, or harm other users. You agree not to post illegal, offensive, or misleading content. Violations may result in account suspension or termination.</p>
+  <!-- 2 -->
+  <section>
+    <h2>02</h2>
+    <h3>Eligibility</h3>
+    <p>You must be at least 17 years old to use Matchaa. By creating an account, you confirm that you meet this requirement. If we become aware that a user is under 17, we will immediately terminate their account.</p>
+  </section>
 
-  <h2>5. Content</h2>
-  <p>You retain ownership of content you post. By posting, you grant Matchaa a license to display that content within the app.</p>
+  <div class="divider"></div>
 
-  <h2>6. Termination</h2>
-  <p>We reserve the right to suspend or terminate accounts that violate these terms.</p>
+  <!-- 3 -->
+  <section>
+    <h2>03</h2>
+    <h3>Purpose</h3>
+    <p>Matchaa is a platonic friendship app. It is not a dating app. The platform exists to help people find genuine real-world friendships — nothing more.</p>
+    <p>Any use of Matchaa for romantic solicitation, sexual purposes, escort services, or any activity that violates the spirit of platonic connection is strictly prohibited and will result in immediate account termination.</p>
+  </section>
 
-  <h2>7. Disclaimer</h2>
-  <p>Matchaa is provided as-is. We are not responsible for interactions between users that occur outside the app.</p>
+  <div class="divider"></div>
 
-  <h2>8. Contact</h2>
-  <p>Questions? Email us at <a href="mailto:support@matchaa.app">support@matchaa.app</a></p>
+  <!-- 4 -->
+  <section>
+    <h2>04</h2>
+    <h3>Your Account</h3>
+    <p>You are responsible for maintaining the confidentiality of your account and for all activity that occurs under it. You must provide accurate information when creating your account and keep it up to date.</p>
+    <p>You may not create multiple accounts, impersonate others, or use the app on behalf of someone else without their permission.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- 5 -->
+  <section>
+    <h2>05</h2>
+    <h3>Community Standards</h3>
+    <p>Matchaa is built on respect. By using the app, you agree not to:</p>
+    <ul>
+      <li>Harass, bully, threaten, or abuse other users</li>
+      <li>Post content that is illegal, offensive, discriminatory, or misleading</li>
+      <li>Share explicit, sexual, or violent content</li>
+      <li>Solicit money, goods, or services from other users</li>
+      <li>Spam or send unsolicited bulk messages</li>
+      <li>Use the app for any commercial or promotional purpose without our consent</li>
+      <li>Attempt to scrape, reverse engineer, or interfere with the app</li>
+    </ul>
+    <p>Violations may result in content removal, account suspension, or permanent termination.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- 6 -->
+  <section>
+    <h2>06</h2>
+    <h3>Your Content</h3>
+    <p>You retain ownership of any content you post on Matchaa, including your profile information, photos, and messages. By posting content, you grant Matchaa a non-exclusive, royalty-free licence to display and use that content within the app for the purpose of providing the service.</p>
+    <p>You are solely responsible for the content you post. Do not share personal information (phone numbers, addresses, financial details) with other users in the app.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- 7 -->
+  <section>
+    <h2>07</h2>
+    <h3>Safety</h3>
+    <p>While we work hard to keep Matchaa safe, we cannot guarantee the behaviour of other users. When meeting someone in person for the first time, always:</p>
+    <ul>
+      <li>Meet in a public place</li>
+      <li>Tell someone where you're going</li>
+      <li>Trust your instincts</li>
+    </ul>
+    <p>You can block or report any user directly within the app. We take all reports seriously and investigate promptly.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- 8 -->
+  <section>
+    <h2>08</h2>
+    <h3>In-App Purchases</h3>
+    <p>Matchaa offers optional in-app purchases including coins and boosts. All purchases are final and non-refundable unless required by applicable law. Coins and boosts have no monetary value and cannot be transferred or exchanged for cash.</p>
+    <p>All payments are processed by Apple in accordance with their terms and privacy policy.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- 9 -->
+  <section>
+    <h2>09</h2>
+    <h3>Termination</h3>
+    <p>We reserve the right to suspend or permanently terminate any account that violates these terms, at our sole discretion, with or without notice. You may delete your account at any time from the settings screen within the app.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- 10 -->
+  <section>
+    <h2>10</h2>
+    <h3>Disclaimer</h3>
+    <p>Matchaa is provided on an "as is" basis. We make no warranties, express or implied, regarding the reliability, availability, or fitness of the app for a particular purpose.</p>
+    <p>We are not responsible for the actions of other users, or for any interactions between users that occur outside the app. Use Matchaa at your own risk.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- 11 -->
+  <section>
+    <h2>11</h2>
+    <h3>Limitation of Liability</h3>
+    <p>To the fullest extent permitted by law, Matchaa shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the app, even if we have been advised of the possibility of such damages.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- 12 -->
+  <section>
+    <h2>12</h2>
+    <h3>Governing Law</h3>
+    <p>These terms are governed by the laws of Victoria, Australia. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the courts of Victoria.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- 13 -->
+  <section>
+    <h2>13</h2>
+    <h3>Changes to These Terms</h3>
+    <p>We may update these terms from time to time. We'll notify you of significant changes through the app. Continued use of Matchaa after changes are posted constitutes your acceptance of the updated terms.</p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- 14 -->
+  <section>
+    <h2>14</h2>
+    <h3>Contact Us</h3>
+    <p>Questions about these terms? We're happy to help.</p>
+    <div class="card">
+      <p><strong>Matchaa</strong><br>
+      Email: <a href="mailto:support@matchaa.app">support@matchaa.app</a><br>
+      Website: <a href="https://www.matchaa.app">www.matchaa.app</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>© 2026 Matchaa</span>
+  <span>Last updated: May 5, 2026</span>
+</footer>
+
 </body>
 </html>
