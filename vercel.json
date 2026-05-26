@@ -15,6 +15,7 @@
     }
   ],
   "rewrites": [
+  { "source": "/waitlist", "destination": "/waitlist.html" },
   { "source": "/privacy", "destination": "/privacy.html" },
   { "source": "/terms", "destination": "/terms.html" },
   { "source": "/join", "destination": "/index.html" },
