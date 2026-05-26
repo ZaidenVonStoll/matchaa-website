@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matchaa — Join the Waitlist</title>
+  <meta name="description" content="Good things come to those who wait. Join the Matchaa waitlist and be first to find your people." />
+  <link rel="icon" href="/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:#3D6B4F; --green-dark:#2D5C3E; --green-deep:#1C3D2A;
+      --cream:#FAF8F4; --white:#FFF; --muted:#7A8C80; --border:#E4EDE7; --text:#1C2B22;
+      --lime:#97c459; --sage:#d0e8c8; --coral:#c14e1a; --coral-soft:#fff1e6;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream); color: var(--text);
+      font-family: 'DM Sans', sans-serif; overflow-x: hidden;
+      min-height: 100vh; display: flex; flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 40px;
+      background: rgba(250,248,244,0.88); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      animation: slideDown .6s ease both;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-mark {
+      width: 36px; height: 36px; background: var(--green); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif; color: white; font-size: 18px;
+    }
+    .nav-name { font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+    .nav-cta {
+      background: var(--green); color: white; padding: 10px 22px;
+      border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .nav-cta:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+    /* ── FLOATING LEAVES ── */
+    .leaf-canvas {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+    }
+    .leaf {
+      position: absolute; font-size: 24px; opacity: 0;
+      animation: leafFall linear infinite;
+      filter: blur(0.5px);
+    }
+    @keyframes leafFall {
+      0% { opacity: 0; transform: translateY(-60px) rotate(0deg) translateX(0); }
+      10% { opacity: .35; }
+      90% { opacity: .35; }
+      100% { opacity: 0; transform: translateY(calc(100vh + 60px)) rotate(360deg) translateX(80px); }
+    }
+
+    /* ── HERO ── */
+    .waitlist-hero {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 140px 24px 80px;
+      position: relative; overflow: hidden; z-index: 1;
+    }
+    .waitlist-hero::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(151,196,89,.1) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(61,107,79,.08) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 40% at 85% 70%, rgba(208,232,200,.15) 0%, transparent 50%);
+    }
+    .waitlist-hero::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(151,196,89,.15); color: var(--green);
+      border: 1px solid rgba(151,196,89,.3); border-radius: 100px;
+      padding: 8px 18px; font-size: 13px; font-weight: 600; letter-spacing: .02em;
+      margin-bottom: 36px;
+      animation: fadeUp .7s ease both, badgePulse 3s 1.5s ease-in-out infinite;
+    }
+
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(42px, 8vw, 80px); line-height: 1.05; color: var(--text);
+      max-width: 750px; margin-bottom: 28px;
+      animation: fadeUp .7s .15s ease both;
+      font-weight: 500;
+    }
+    h1 em {
+      font-style: italic; color: var(--green);
+      background: linear-gradient(135deg, var(--green) 0%, var(--lime) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 19px); color: var(--muted); max-width: 460px;
+      line-height: 1.7; margin-bottom: 48px;
+      animation: fadeUp .7s .3s ease both;
+    }
+
+    /* ── FORM ── */
+    .waitlist-form {
+      display: flex; gap: 12px; max-width: 480px; width: 100%;
+      animation: fadeUp .7s .45s ease both; position: relative; z-index: 1;
+    }
+    .waitlist-input {
+      flex: 1; padding: 18px 22px; border-radius: 100px;
+      border: 2px solid var(--border); background: white;
+      font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--text);
+      outline: none; transition: border-color .3s, box-shadow .3s;
+    }
+    .waitlist-input::placeholder { color: #b0bdb4; }
+    .waitlist-input:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 4px rgba(61,107,79,.1);
+    }
+    .waitlist-btn {
+      background: var(--green); color: white; padding: 18px 32px;
+      border-radius: 100px; font-size: 16px; font-weight: 600;
+      border: none; cursor: pointer; white-space: nowrap;
+      font-family: 'DM Sans', sans-serif;
+      box-shadow: 0 8px 32px rgba(61,107,79,.3);
+      transition: all .25s; position: relative; overflow: hidden;
+    }
+    .waitlist-btn::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 0; height: 0; border-radius: 50%;
+      background: rgba(255,255,255,.15);
+      transform: translate(-50%, -50%);
+      transition: width .4s, height .4s;
+    }
+    .waitlist-btn:hover {
+      background: var(--green-dark); transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 14px 44px rgba(61,107,79,.4);
+    }
+    .waitlist-btn:hover::after { width: 200px; height: 200px; }
+    .waitlist-btn:active { transform: translateY(-1px) scale(.98); }
+    .waitlist-btn:disabled { opacity: .6; cursor: not-allowed; transform: none !important; }
+
+    /* ── MESSAGES ── */
+    .form-msg { margin-top: 18px; font-size: 14px; min-height: 20px; font-weight: 500; }
+    .form-msg.success { color: var(--green); }
+    .form-msg.error { color: var(--coral); }
+
+    /* ── SUCCESS ANIMATION ── */
+    .success-burst {
+      position: fixed; inset: 0; pointer-events: none; z-index: 200;
+    }
+    .confetti {
+      position: absolute; width: 8px; height: 8px; border-radius: 2px;
+      animation: confettiFall 1.5s ease-out forwards;
+    }
+    @keyframes confettiFall {
+      0% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); }
+      100% { opacity: 0; transform: translateY(100vh) rotate(720deg) scale(0.3); }
+    }
+
+    .waitlist-note {
+      margin-top: 20px; font-size: 13px; color: var(--muted);
+      animation: fadeUp .7s .55s ease both;
+    }
+
+    /* ── SOCIAL PROOF ── */
+    .social-proof {
+      margin-top: 56px; display: flex; align-items: center; gap: 16px;
+      animation: fadeUp .7s .65s ease both;
+    }
+    .avatar-stack { display: flex; }
+    .avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 3px solid var(--cream); margin-left: -12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 600; color: white;
+      transition: transform .3s;
+    }
+    .avatar:first-child { margin-left: 0; }
+    .avatar:hover { transform: scale(1.15) translateY(-4px); z-index: 2; }
+    .a1 { background: linear-gradient(135deg, #5a8a6a, #97c459); }
+    .a2 { background: linear-gradient(135deg, #3D6B4F, #5a8a6a); }
+    .a3 { background: linear-gradient(135deg, #2D5C3E, #3D6B4F); }
+    .a4 { background: linear-gradient(135deg, #1C3D2A, #2D5C3E); font-size: 12px; }
+    .social-text { font-size: 14px; color: var(--muted); line-height: 1.4; }
+    .social-text strong { color: var(--text); font-weight: 600; }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      padding: 24px 0; overflow: hidden; position: relative; z-index: 1;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      animation: fadeUp .7s .8s ease both;
+    }
+    .marquee {
+      display: flex; gap: 48px; width: max-content;
+      animation: marqueeScroll 25s linear infinite;
+    }
+    .marquee-item {
+      font-family: 'Fraunces', serif; font-size: 18px; color: var(--muted);
+      white-space: nowrap; display: flex; align-items: center; gap: 12px;
+      font-weight: 400; font-style: italic;
+    }
+    .marquee-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--lime); flex-shrink: 0;
+    }
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text); padding: 48px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px; position: relative; z-index: 1;
+    }
+    .footer-brand { font-family: 'DM Serif Display', serif; font-size: 22px; color: white; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: rgba(255,255,255,.45); text-decoration: none; font-size: 14px; transition: color .2s; }
+    .footer-links a:hover { color: white; }
+    .footer-copy { color: rgba(255,255,255,.3); font-size: 13px; width: 100%; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes badgePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(151,196,89,.2); }
+      50% { box-shadow: 0 0 0 8px rgba(151,196,89,0); }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .waitlist-form { flex-direction: column; }
+      .waitlist-btn { width: 100%; }
+      .social-proof { flex-direction: column; gap: 8px; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .marquee-item { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- FLOATING LEAVES -->
+<div class="leaf-canvas" id="leafCanvas"></div>
+
+<nav>
+  <a class="nav-logo" href="/">
+    <div class="nav-mark">M</div>
+    <span class="nav-name">matchaa</span>
+  </a>
+  <a class="nav-cta" href="/">Home</a>
+</nav>
+
+<section class="waitlist-hero">
+  <div class="hero-badge">🍵 Something fresh is brewing</div>
+  <h1>Good things come<br>to those who <em>wait.</em></h1>
+  <p class="hero-sub">Matchaa is rolling out to new cities. Drop your email and be the first to know when we land near you.</p>
+
+  <form class="waitlist-form" id="waitlistForm" onsubmit="return handleSubmit(event)">
+    <input class="waitlist-input" type="email" id="emailInput" placeholder="your@email.com" required autocomplete="email" />
+    <button class="waitlist-btn" type="submit" id="submitBtn">Join the waitlist</button>
+  </form>
+  <div class="form-msg" id="formMsg"></div>
+  <p class="waitlist-note">No spam, ever. Just one email when we launch near you.</p>
+
+  <div class="social-proof">
+    <div class="avatar-stack">
+      <div class="avatar a1">Z</div>
+      <div class="avatar a2">K</div>
+      <div class="avatar a3">M</div>
+      <div class="avatar a4">+</div>
+    </div>
+    <div class="social-text"><strong id="countDisplay">Others are already waiting</strong></div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee" id="marquee">
+    <span class="marquee-item"><span class="marquee-dot"></span>real friendships</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>no algorithms</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>meet in person</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>your city, your people</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>verified humans only</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>zero tolerance for creeps</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>expats & nomads</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>from coffee to hikes</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item"><span class="marquee-dot"></span>real friendships</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>no algorithms</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>meet in person</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>your city, your people</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>verified humans only</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>zero tolerance for creeps</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>expats & nomads</span>
+    <span class="marquee-item"><span class="marquee-dot"></span>from coffee to hikes</span>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">matchaa</div>
+  <div class="footer-links">
+    <a href="/privacy">Privacy Policy</a>
+    <a href="mailto:hello@matchaa.app">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 Matchaa. All rights reserved.</div>
+</footer>
+
+<!-- CONFETTI CONTAINER -->
+<div class="success-burst" id="burstContainer"></div>
+
+<script>
+  const SUPABASE_URL = 'https://jwmltmzlubmkzrwbozmu.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp3bWx0bXpsdWJta3pyd2Jvem11Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3MDE0ODAsImV4cCI6MjA5MTI3NzQ4MH0.Qe8sqIXCYgXQHQTCuhp13T7JrkhyXqqwGfD6Jk18iT8';
+
+  // ── FLOATING LEAVES ──
+  const leafEmojis = ['🍃', '🌿', '🍵', '🌱'];
+  const canvas = document.getElementById('leafCanvas');
+  function spawnLeaf() {
+    const leaf = document.createElement('div');
+    leaf.className = 'leaf';
+    leaf.textContent = leafEmojis[Math.floor(Math.random() * leafEmojis.length)];
+    leaf.style.left = Math.random() * 100 + '%';
+    leaf.style.fontSize = (16 + Math.random() * 18) + 'px';
+    leaf.style.animationDuration = (8 + Math.random() * 12) + 's';
+    leaf.style.animationDelay = '0s';
+    canvas.appendChild(leaf);
+    setTimeout(() => leaf.remove(), 22000);
+  }
+  setInterval(spawnLeaf, 2200);
+  for (let i = 0; i < 5; i++) setTimeout(spawnLeaf, i * 600);
+
+  // ── CONFETTI BURST ──
+  function fireBurst() {
+    const container = document.getElementById('burstContainer');
+    const colors = ['#97c459', '#3D6B4F', '#d0e8c8', '#5a8a6a', '#c14e1a', '#FAF8F4', '#1C3D2A'];
+    for (let i = 0; i < 60; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.left = (30 + Math.random() * 40) + '%';
+      c.style.top = (20 + Math.random() * 20) + '%';
+      c.style.width = (4 + Math.random() * 8) + 'px';
+      c.style.height = (4 + Math.random() * 8) + 'px';
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      c.style.animationDuration = (1 + Math.random() * 1.5) + 's';
+      c.style.animationDelay = (Math.random() * 0.3) + 's';
+      container.appendChild(c);
+      setTimeout(() => c.remove(), 3000);
+    }
+  }
+
+  // ── FORM SUBMIT ──
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('emailInput').value.trim();
+    const btn = document.getElementById('submitBtn');
+    const msg = document.getElementById('formMsg');
+
+    if (!email) return;
+
+    btn.disabled = true;
+    btn.textContent = 'Joining...';
+    msg.textContent = '';
+    msg.className = 'form-msg';
+
+    try {
+      const res = await fetch(SUPABASE_URL + '/rest/v1/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ email: email })
+      });
+
+      if (res.ok || res.status === 201) {
+        msg.textContent = "You're on the list! We'll be in touch.";
+        msg.className = 'form-msg success';
+        document.getElementById('emailInput').value = '';
+        btn.textContent = "You're in ✓";
+        fireBurst();
+        fetchCount();
+      } else {
+        const err = await res.json().catch(function() { return null; });
+        if (err && err.message && err.message.includes('duplicate')) {
+          msg.textContent = "You're already on the waitlist!";
+          msg.className = 'form-msg success';
+        } else {
+          msg.textContent = 'Something went wrong. Please try again.';
+          msg.className = 'form-msg error';
+        }
+        btn.textContent = 'Join the waitlist';
+        btn.disabled = false;
+      }
+    } catch(e) {
+      msg.textContent = 'Connection error. Please try again.';
+      msg.className = 'form-msg error';
+      btn.textContent = 'Join the waitlist';
+      btn.disabled = false;
+    }
+  }
+
+  // ── WAITLIST COUNT ──
+  async function fetchCount() {
+    try {
+      const res = await fetch(SUPABASE_URL + '/rest/v1/waitlist?select=id', {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+          'Prefer': 'count=exact'
+        }
+      });
+      const range = res.headers.get('content-range');
+      if (range) {
+        const total = parseInt(range.split('/')[1]);
+        if (total > 0) {
+          document.getElementById('countDisplay').textContent = total.toLocaleString() + '+ people are already waiting';
+        }
+      }
+    } catch(e) {}
+  }
+  fetchCount();
+</script>
+
+</body>
+</html>
