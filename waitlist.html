@@ -185,6 +185,7 @@
       transition: transform .3s;
     }
     .avatar:first-child { margin-left: 0; }
+    img.avatar { object-fit: cover; }
     .avatar:hover { transform: scale(1.15) translateY(-4px); z-index: 2; }
     .a1 { background: linear-gradient(135deg, #5a8a6a, #97c459); }
     .a2 { background: linear-gradient(135deg, #3D6B4F, #5a8a6a); }
@@ -261,7 +262,7 @@
 
 <nav>
   <a class="nav-logo" href="/">
-    <div class="nav-mark">M</div>
+    <img class="nav-mark" src="/logo-white.png" alt="Matchaa" style="object-fit:contain;padding:6px;" />
     <span class="nav-name">matchaa</span>
   </a>
   <a class="nav-cta" href="/">Home</a>
@@ -281,9 +282,9 @@
 
   <div class="social-proof">
     <div class="avatar-stack">
-      <div class="avatar a1">Z</div>
-      <div class="avatar a2">K</div>
-      <div class="avatar a3">M</div>
+      <img class="avatar a1" src="/mock-marcus.png" alt="" />
+      <img class="avatar a2" src="/mock-sofia.png" alt="" />
+      <img class="avatar a3" src="/mock-amara.png" alt="" />
       <div class="avatar a4">+</div>
     </div>
     <div class="social-text"><strong id="countDisplay">Others are already waiting</strong></div>
