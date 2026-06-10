@@ -19,7 +19,7 @@
   { "source": "/privacy", "destination": "/privacy.html" },
   { "source": "/terms", "destination": "/terms.html" },
   { "source": "/join", "destination": "/index.html" },
-  { "source": "/join/:path*", "destination": "/index.html" }
-  { "source": "/road-to-10000-friendships", "destination": "/road-to-10000-friendships.html" },
+  { "source": "/join/:path*", "destination": "/index.html" },
+  { "source": "/road-to-10000-friendships", "destination": "/road-to-10000-friendships.html" }
 ]
 }
